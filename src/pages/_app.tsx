@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BaseLayout } from "@/components/layouts/BaseLayout";
+import { theme } from "@/theme/theme";
 
 const App = ({ Component: Page, pageProps }: AppProps) => {
   return (
-    <ChakraProvider resetCSS>
+    <ChakraProvider theme={theme} resetCSS>
       <BaseLayout>
         <Page {...pageProps} />
       </BaseLayout>
