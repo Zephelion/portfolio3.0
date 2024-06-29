@@ -1,5 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 export const Header = () => {
-  return <Box>Header</Box>;
+  return (
+    <Text fontWeight="400" fontSize="3rem">
+      Header
+    </Text>
+  );
 };
