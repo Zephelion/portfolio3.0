@@ -4,8 +4,13 @@ import localFont from "next/font/local";
 export const humane = localFont({
   src: [
     {
+      path: "../../public/fonts/Humane-Thin.otf",
+      weight: "100",
+      style: "normal",
+    },
+    {
       path: "../../public/fonts/Humane-ExtraLight.otf",
-      weight: "300",
+      weight: "200",
       style: "normal",
     },
     {
@@ -33,16 +38,11 @@ export const humane = localFont({
       weight: "700",
       style: "normal",
     },
-    {
-      path: "../../public/fonts/Humane-Thin.otf",
-      weight: "300",
-      style: "normal",
-    },
   ],
 });
 
 export const fonts: ChakraTheme["fonts"] = {
-  body: `${humane.style.fontFamily}, sans-serif`,
+  body: `raleway, sans-serif`,
   heading: `${humane.style.fontFamily}, sans-serif`,
   mono: `"Humane", monospace`,
 };
