@@ -1,5 +1,5 @@
 import { sizes, breakpoints, space } from "@/theme";
-import { fonts } from "./typography";
+import { fonts, fontSizes, fontWeights, lineHeights } from "./typography";
 import { extendTheme } from "@chakra-ui/react";
 import * as CustomComponents from "./components";
 
@@ -13,6 +13,9 @@ const themeValues = {
   breakpoints,
   space,
   fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
 };
 
 export const theme = extendTheme(themeValues);
