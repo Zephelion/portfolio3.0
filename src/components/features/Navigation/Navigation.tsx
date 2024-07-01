@@ -1,5 +1,5 @@
 import { Flex, Link, Text, chakra } from "@chakra-ui/react";
-import { LinkProps } from "@/types/shared";
+import { LinkProps } from "@/types";
 import { formatIndexWithZero } from "@/utils";
 
 interface NavigationProps {

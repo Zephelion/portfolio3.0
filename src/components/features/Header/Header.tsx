@@ -9,7 +9,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Navigation, MobileNavigation } from "@/components/features";
-import { LinkProps } from "@/types/shared";
+import { LinkProps } from "@/types";
 interface HeaderProps {
   data: {
     title: string;
@@ -36,7 +36,7 @@ export const Header = ({ data }: HeaderProps) => {
                   key={index}
                   as="span"
                   textTransform="uppercase"
-                  fontSize="5xl"
+                  fontSize={{ base: "5xl", md: "6xl" }}
                   lineHeight="none"
                   marginLeft={index !== 0 ? "space-36" : 0}
                 >
