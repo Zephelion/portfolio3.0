@@ -3,19 +3,12 @@ import {
   Container,
   Flex,
   Button,
-  Divider,
   Heading,
   chakra,
   useDisclosure,
-  Link,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalBody,
-  ModalFooter,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Navigation } from "@/components/features";
+import { Navigation, MobileNavigation } from "@/components/features";
 import { LinkProps } from "@/types/shared";
 interface HeaderProps {
   data: {
@@ -58,32 +51,12 @@ export const Header = ({ data }: HeaderProps) => {
       </Box>
 
       {/* Modal */}
-      <Modal isOpen={isOpen} onClose={onClose} size="full">
-        <ModalOverlay />
-        <ModalContent>
-          <Container display="flex" justifyContent="flex-end" py="space-36">
-            <StyledButton onClick={onClose}>close</StyledButton>
-          </Container>
-          <ModalBody>
-            <Navigation links={links} />
-          </ModalBody>
-          <Container>
-            <Divider bg="black" height="1px" />
-          </Container>
-          <ModalFooter display="flex" justifyContent="space-between">
-            {socials.map((social, index) => (
-              <Link
-                key={index}
-                href={social.href}
-                target="_blank"
-                fontWeight={200}
-              >
-                {social.title}
-              </Link>
-            ))}
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <MobileNavigation
+        isOpen={isOpen}
+        onClose={onClose}
+        links={links}
+        socials={socials}
+      />
     </>
   );
 };
