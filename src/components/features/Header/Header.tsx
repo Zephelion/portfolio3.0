@@ -13,6 +13,7 @@ import {
   ModalContent,
   ModalBody,
   ModalFooter,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Navigation } from "@/components/features";
 import { LinkProps } from "@/types/shared";
@@ -28,6 +29,7 @@ export const Header = ({ data }: HeaderProps) => {
   const { title, links, socials } = data;
   const spittedTitle = title.split(" ");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
     <>
@@ -50,6 +52,7 @@ export const Header = ({ data }: HeaderProps) => {
               ))}
             </Flex>
             <StyledButton onClick={onOpen}>menu</StyledButton>
+            {isDesktop && <Navigation links={links} />}
           </Flex>
         </Container>
       </Box>

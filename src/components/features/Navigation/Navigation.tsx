@@ -1,5 +1,6 @@
 import { Flex, Link, Text, chakra } from "@chakra-ui/react";
 import { LinkProps } from "@/types/shared";
+import { formatIndexWithZero } from "@/utils";
 
 interface NavigationProps {
   links: LinkProps[];
@@ -7,11 +8,21 @@ interface NavigationProps {
 
 export const Navigation = ({ links }: NavigationProps) => {
   return (
-    <Flex as="nav" direction="column">
+    <Flex
+      as="nav"
+      direction={{ base: "column", md: "row" }}
+      gap={{ base: 0, md: "space-16" }}
+    >
       {links.map((link, index) => (
         <StyledLink key={index} href={link.href}>
-          <Text as="span" marginRight="space-16" fontSize="sm">
-            {String(index + 1).padStart(2, "0")}
+          <Text
+            as="span"
+            display={{ base: "block", md: "none" }}
+            marginRight="space-16"
+            fontSize="sm"
+          >
+            {/* Prefix a number with a zero */}
+            {formatIndexWithZero(index)}
           </Text>
           {link.title}
         </StyledLink>
@@ -23,9 +34,9 @@ export const Navigation = ({ links }: NavigationProps) => {
 const StyledLink = chakra(Link, {
   baseStyle: {
     display: "flex",
-    fontSize: "4xl",
+    fontSize: { base: "4xl", md: " md" },
     fontWeight: 300,
     textTransform: "capitalize",
-    marginBottom: "space-36",
+    marginBottom: { base: "space-16", md: 0 },
   },
 });
