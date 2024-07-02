@@ -27,7 +27,7 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <Flex flexDir="column">
       <Header data={headerData} />
-      <Box as="main" display="block" h="400vh">
+      <Box as="main" display="block">
         {children}
       </Box>
       <Footer />

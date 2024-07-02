@@ -73,6 +73,7 @@ export const fontWeights: ChakraTheme["fontWeights"] = {
 
 export const lineHeights: ChakraTheme["lineHeights"] = {
   normal: "normal",
+  compact: "0.9",
   none: "1",
   shortest: "1.125",
   shorter: "1.25",

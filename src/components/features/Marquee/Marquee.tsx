@@ -12,25 +12,27 @@ import { useWindowSize } from "react-use";
 
 interface MarqueeProps {
   text: string;
-  direction?: "left" | "right";
+  baseVelocity: number;
 }
 
 const SETTINGS = {
-  SPEED: 100,
   SPEED_ON_HOVER: 0.2,
 };
 
-export const Marquee = ({ text }: MarqueeProps) => {
+export const Marquee = ({ text, baseVelocity = 50 }: MarqueeProps) => {
   const [numItems, setNumItems] = useState(0);
   const itemRef = useRef<HTMLHeadingElement>(null);
 
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
-  const speed = useSpring(SETTINGS.SPEED, {
+  const speed = useSpring(baseVelocity, {
     damping: 40,
     stiffness: 90,
-    mass: 5,
   });
+  // const velocityFactor = useTransform(speed, [0, 1000], [0, 5], {
+  //   clamp: false,
+  // });
+
   const { width } = useWindowSize();
 
   const calculateNumItems = useCallback(() => {
@@ -53,7 +55,7 @@ export const Marquee = ({ text }: MarqueeProps) => {
         speed.set(SETTINGS.SPEED_ON_HOVER);
       }}
       onMouseLeave={() => {
-        speed.set(SETTINGS.SPEED);
+        speed.set(baseVelocity);
       }}
     >
       {/* Render a hidden item initially to measure its width */}
@@ -131,9 +133,9 @@ const StyledHeading = chakra(Heading, {
     w: "max-content",
     color: "black",
     pr: { base: "space-24", md: "space-48" },
-    fontSize: `clamp(${rem(64)}, 9vw, ${rem(120)})`,
+    fontSize: `clamp(${rem(64)}, 18vw, ${rem(304)}) !important`,
     fontWeight: "bold",
-    lineHeight: "none",
+    lineHeight: "compact !important",
     textTransform: "uppercase",
     whiteSpace: "nowrap",
     willChange: "transform",
