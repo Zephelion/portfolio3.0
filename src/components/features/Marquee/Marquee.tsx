@@ -6,7 +6,6 @@ import {
   useSpring,
   useVelocity,
 } from "framer-motion";
-import { rem } from "polished";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useWindowSize } from "react-use";
 
@@ -59,12 +58,13 @@ export const Marquee = ({ text, baseVelocity = 50 }: MarqueeProps) => {
       }}
     >
       {/* Render a hidden item initially to measure its width */}
-      <StyledHeading
+      <Heading
+        size="h1"
         ref={itemRef}
         style={{ visibility: "hidden", position: "absolute" }}
       >
         {text}
-      </StyledHeading>
+      </Heading>
       {Array.from({ length: numItems }).map((_, i) => (
         <MarqueeItem
           key={i}
@@ -124,20 +124,9 @@ const MarqueeItem = ({ speed, velocity, text }: MarqueeItemProps) => {
     rectRef.current = itemRef.current.getBoundingClientRect();
   }, [width, height]);
 
-  return <StyledHeading ref={itemRef}>{text}</StyledHeading>;
+  return (
+    <Heading size="h1" ref={itemRef}>
+      {text}
+    </Heading>
+  );
 };
-
-const StyledHeading = chakra(Heading, {
-  baseStyle: {
-    display: "inline-block",
-    w: "max-content",
-    color: "black",
-    pr: { base: "space-24", md: "space-48" },
-    fontSize: `clamp(${rem(64)}, 18vw, ${rem(304)}) !important`,
-    fontWeight: "bold",
-    lineHeight: "compact !important",
-    textTransform: "uppercase",
-    whiteSpace: "nowrap",
-    willChange: "transform",
-  },
-});
