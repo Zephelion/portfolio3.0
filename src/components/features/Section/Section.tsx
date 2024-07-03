@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, BoxProps, Container } from "@chakra-ui/react";
 
 type SpacingKey =
   | "none"
@@ -9,7 +9,7 @@ type SpacingKey =
   | "large"
   | "extraLarge";
 
-interface SectionProps {
+interface SectionProps extends BoxProps {
   children: ReactNode;
   spacingTop?: SpacingKey;
   spacingBottom?: SpacingKey;
@@ -30,6 +30,7 @@ export const Section = ({
   spacingTop,
   spacingBottom,
   isFullScreen,
+  ...props
 }: SectionProps) => {
   return (
     <Box
@@ -37,6 +38,7 @@ export const Section = ({
       position="relative"
       mt={spacingMap[spacingTop || "none"]}
       mb={spacingMap[spacingBottom || "none"]}
+      {...props}
     >
       {isFullScreen ? <>{children}</> : <Container>{children}</Container>}
     </Box>

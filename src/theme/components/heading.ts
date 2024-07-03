@@ -13,7 +13,7 @@ export const Heading: ComponentStyleConfig = {
       w: "max-content",
       color: "black",
       pr: { base: "space-24", md: "space-48" },
-      fontSize: `clamp(${rem(64)}, 18vw, ${rem(304)})`,
+      fontSize: `clamp(${rem(64)}, 20vw, ${rem(304)})`,
       lineHeight: "compact !important",
       whiteSpace: "nowrap",
       willChange: "transform",

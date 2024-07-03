@@ -64,6 +64,7 @@ export const fontSizes: ChakraTheme["fontSizes"] = {
 };
 
 export const fontWeights: ChakraTheme["fontWeights"] = {
+  thin: 200,
   light: 300,
   normal: 400,
   medium: 500,
