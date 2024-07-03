@@ -64,6 +64,7 @@ export const fontSizes: ChakraTheme["fontSizes"] = {
 };
 
 export const fontWeights: ChakraTheme["fontWeights"] = {
+  thin: 200,
   light: 300,
   normal: 400,
   medium: 500,
@@ -73,6 +74,7 @@ export const fontWeights: ChakraTheme["fontWeights"] = {
 
 export const lineHeights: ChakraTheme["lineHeights"] = {
   normal: "normal",
+  compact: "0.9",
   none: "1",
   shortest: "1.125",
   shorter: "1.25",

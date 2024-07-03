@@ -1,10 +1,14 @@
-import { Heading } from "@chakra-ui/react";
 import { NextPage } from "next";
+import { Hero } from "@/components/features";
 
 interface PageProps {}
 
 const Page: NextPage<PageProps> = () => {
-  return <></>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 };
 
 export default Page;
