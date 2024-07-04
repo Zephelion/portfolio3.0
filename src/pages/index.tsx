@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import { Hero, About } from "@/components/features";
-import Head from "next/head";
 
 interface PageProps {}
 
@@ -17,22 +16,24 @@ const aboutData = {
 const Page: NextPage<PageProps> = () => {
   return (
     <>
-      <Head>
-        <title>Russell Numo • Frontend developer</title>
-        <meta
-          name="description"
-          content="Welcome to Russell Numo's portfolio. Explore my work and projects."
-        />
-        <meta
-          name="keywords"
-          content="Russell Numo, Portfolio, Web Development, Frontend"
-        />
-        <meta name="author" content="Russell Numo" />
-      </Head>
       <Hero />
       <About data={aboutData} />
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      seo: {
+        title: "Russell Numo • Frontend developer",
+        description:
+          "Welcome to Russell Numo's portfolio. Explore my work and projects.",
+        keywords: "Russell Numo, Portfolio, Web Development, Frontend",
+        openGraph: { type: "website" },
+      },
+    },
+  };
 };
 
 export default Page;
