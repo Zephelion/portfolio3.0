@@ -7,11 +7,16 @@ export const Loader = () => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
+    // Disable scrolling
+    document.body.style.overflow = "hidden";
+
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(interval);
 
+          // Enable scrolling
+          document.body.style.overflow = "auto";
           setTimeout(() => setShouldAnimate(true), 2000); // Wait for 2s before animating out
           return 100;
         }
@@ -27,7 +32,7 @@ export const Loader = () => {
       height="100vh"
       width="100vw"
       bg="black"
-      position="absolute"
+      position="fixed"
       top="0"
       display="flex"
       flexDirection="column"

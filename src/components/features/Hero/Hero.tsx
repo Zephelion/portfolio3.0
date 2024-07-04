@@ -11,7 +11,7 @@ export const Hero = () => {
       justifyContent="space-between"
       isFullScreen
     >
-      <Box>
+      <Box marginTop="space-56">
         <Marquee text="Frontend developer" baseVelocity={-150} />
         <Marquee text="Frontend developer" baseVelocity={150} />
       </Box>

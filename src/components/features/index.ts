@@ -7,3 +7,4 @@ export { Marquee } from "./Marquee";
 export { Section } from "./Section";
 export { Clock } from "./Clock";
 export { Loader } from "./Loader";
+export { About } from "./About";
