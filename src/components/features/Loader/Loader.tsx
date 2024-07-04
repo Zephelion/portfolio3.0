@@ -18,7 +18,7 @@ export const Loader = () => {
 
           // Enable scrolling
           document.body.style.overflow = "auto";
-          setTimeout(() => setShouldAnimate(true), 2000); // Wait for 2s before animating out
+          setTimeout(() => setShouldAnimate(true), 1500); // Wait for 1.5s before animating out
           return 100;
         }
         return prevProgress + 1;

@@ -20,14 +20,21 @@ export const About = ({ data }: AboutProps) => {
 
   return (
     <Section spacingTop="large">
-      <Text ref={paragraphRef} variant="paragraph" maxWidth="40ch">
+      <Box ref={paragraphRef}>
         {content.map((line, index) => (
-          <Box as="span" key={index} overflow="hidden" bg="red">
-            <Box as="span">{line}</Box>
+          <Box key={index} overflow="hidden">
+            <Text
+              as="span"
+              variant="paragraph"
+              display="block"
+              position="relative"
+            >
+              {line}
+            </Text>
             {/* {line} */}
           </Box>
         ))}
-      </Text>
+      </Box>
     </Section>
   );
 };
