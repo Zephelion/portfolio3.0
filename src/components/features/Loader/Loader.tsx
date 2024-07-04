@@ -1,6 +1,7 @@
 import { Section } from "@/components/features";
-import { Heading, Text } from "@chakra-ui/react";
+import { chakra, Heading, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { rem } from "polished";
 
 export const Loader = () => {
   const [progress, setProgress] = useState(0);
@@ -41,13 +42,22 @@ export const Loader = () => {
       transition="transform 1s cubic-bezier(0.4, 0.0, 0.2, 1)"
       zIndex={10}
     >
-      <Text color="white" fontFamily="Humane" fontWeight="bold" fontSize="8xl">
+      <StyledText>
         This loading screen actually serves no purpose it&apos;s for the
         &quot;aesthetics&quot;
-      </Text>
+      </StyledText>
       <Heading as="span" color="white" fontSize="9xl">
         {progress}%
       </Heading>
     </Section>
   );
 };
+
+const StyledText = chakra(Text, {
+  baseStyle: {
+    fontFamily: "Humane",
+    fontWeight: "bold",
+    color: "white",
+    fontSize: `clamp(${rem(48)}, 5vw, ${rem(70)})`,
+  },
+});
