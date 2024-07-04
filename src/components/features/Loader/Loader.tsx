@@ -36,7 +36,10 @@ export const Loader = () => {
       transition="transform 1s cubic-bezier(0.4, 0.0, 0.2, 1)"
       zIndex={10}
     >
-      <Text></Text>
+      <Text color="white" fontFamily="Humane" fontWeight="bold" fontSize="8xl">
+        This loading screen actually serves no purpose it&apos;s for the
+        &quot;aesthetics&quot;
+      </Text>
       <Heading as="span" color="white" fontSize="9xl">
         {progress}%
       </Heading>
