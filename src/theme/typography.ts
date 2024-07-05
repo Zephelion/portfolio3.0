@@ -42,7 +42,7 @@ export const humane = localFont({
 });
 
 export const fonts: ChakraTheme["fonts"] = {
-  body: `system-ui, sans-serif`,
+  body: `raleway, sans-serif`,
   heading: `${humane.style.fontFamily}, sans-serif`,
   mono: `"Humane", monospace`,
 };

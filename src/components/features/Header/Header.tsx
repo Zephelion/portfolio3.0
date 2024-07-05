@@ -66,7 +66,7 @@ const StyledButton = chakra(Button, {
     textTransform: "uppercase",
     display: { base: "block", md: "none" },
     background: "none",
-    fontWeight: "light",
+    fontWeight: "normal",
     border: "1px solid",
     borderColor: "black",
     borderRadius: "unset",
