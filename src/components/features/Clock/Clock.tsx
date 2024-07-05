@@ -1,4 +1,4 @@
-import { Flex, chakra, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { useEffect, useState } from "react";

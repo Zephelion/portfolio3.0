@@ -1,5 +1,5 @@
 import { Section } from "@/components/features";
-import { chakra, Heading, Text } from "@chakra-ui/react";
+import { chakra, Flex, Heading, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { rem } from "polished";
 
@@ -30,7 +30,7 @@ export const Loader = () => {
 
   return (
     <Section
-      height="100vh"
+      height="100dvh"
       width="100vw"
       bg="black"
       position="fixed"
@@ -42,22 +42,20 @@ export const Loader = () => {
       transition="transform 1s cubic-bezier(0.4, 0.0, 0.2, 1)"
       zIndex={10}
     >
-      <StyledText>
-        This loading screen actually serves no purpose it&apos;s for the
-        &quot;aesthetics&quot;
-      </StyledText>
-      <Heading as="span" color="white" fontSize="9xl">
-        {progress}%
-      </Heading>
+      <Flex direction="column">
+        <Heading
+          as="span"
+          fontWeight="semibold"
+          color="white"
+          fontSize={`clamp(${rem(48)}, 5vw, ${rem(70)})`}
+        >
+          This loading screen actually serves no purpose it&apos;s for the
+          &quot;aesthetics&quot;
+        </Heading>
+        <Heading as="span" color="white" fontSize="9xl">
+          {progress}%
+        </Heading>
+      </Flex>
     </Section>
   );
 };
-
-const StyledText = chakra(Text, {
-  baseStyle: {
-    fontFamily: "Humane",
-    fontWeight: "bold",
-    color: "white",
-    fontSize: `clamp(${rem(48)}, 5vw, ${rem(70)})`,
-  },
-});
