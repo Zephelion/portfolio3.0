@@ -10,6 +10,9 @@ interface AboutProps {
   };
 }
 
+const TIMING = 0.1;
+const TRANSLATE_Y = 50;
+
 export const About = ({ data }: AboutProps) => {
   const { content } = data;
   const paragraphRef = useRef(null);
@@ -17,12 +20,8 @@ export const About = ({ data }: AboutProps) => {
 
   const lines = splitContentIntoLines(content, 50);
 
-  useEffect(() => {
-    console.log(isInView);
-  }, [isInView]);
-
   return (
-    <Section spacingTop="large">
+    <Section spacingBottom="large">
       <Box ref={paragraphRef}>
         {lines.map((line, index) => (
           <Box key={index} overflow="hidden">
@@ -31,9 +30,9 @@ export const About = ({ data }: AboutProps) => {
               variant="paragraph"
               display="block"
               position="relative"
-              transform={`translateY(${isInView ? 0 : 50}px)`}
+              transform={`translateY(${isInView ? 0 : TRANSLATE_Y}px)`}
               //In order to make it staggered, we need to add a delay to the transition based on the index
-              transition={`transform 0.5s ease ${index * 0.1}s`}
+              transition={`transform 0.5s ease ${index * TIMING}s`}
             >
               {line}
             </Text>

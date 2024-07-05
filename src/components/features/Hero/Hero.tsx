@@ -9,6 +9,7 @@ export const Hero = () => {
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
+      spacingBottom="large"
       isFullScreen
     >
       <Box marginTop="space-56">
