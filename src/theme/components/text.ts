@@ -10,5 +10,10 @@ export const Text: ComponentStyleConfig = {
       lineHeight: "base",
       letterSpacing: "normal",
     },
+    label: {
+      fontWeight: "thin",
+      textTransform: "uppercase",
+      fontSize: "sm",
+    },
   },
 };

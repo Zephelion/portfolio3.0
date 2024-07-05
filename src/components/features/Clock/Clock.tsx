@@ -1,4 +1,4 @@
-import { Flex, chakra } from "@chakra-ui/react";
+import { Flex, chakra, Text } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { useEffect, useState } from "react";
@@ -25,22 +25,15 @@ export const Clock = () => {
 
   return (
     <Flex whiteSpace="break-spaces">
-      <StyledText> based in amsterdam </StyledText>
-      <StyledText
+      <Text variant="label"> based in amsterdam </Text>
+      <Text
+        variant="label"
         _before={{
           content: '" • "',
         }}
       >
         {formattedTime}
-      </StyledText>
+      </Text>
     </Flex>
   );
 };
-
-export const StyledText = chakra("span", {
-  baseStyle: {
-    fontWeight: "thin",
-    textTransform: "uppercase",
-    fontSize: "sm",
-  },
-});
