@@ -35,7 +35,7 @@ const StyledLink = chakra(Link, {
   baseStyle: {
     display: "flex",
     fontSize: { base: "4xl", md: " md" },
-    fontWeight: 300,
+    fontWeight: "normal",
     textTransform: "capitalize",
     marginBottom: { base: "space-16", md: 0 },
   },

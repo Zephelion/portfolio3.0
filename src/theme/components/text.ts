@@ -5,13 +5,13 @@ export const Text: ComponentStyleConfig = {
   baseStyle: {},
   variants: {
     paragraph: {
-      fontWeight: "thin",
+      fontWeight: "normal",
       fontSize: `clamp(${rem(18)}, 4vw, ${rem(40)})`,
       lineHeight: "base",
       letterSpacing: "normal",
     },
     label: {
-      fontWeight: "thin",
+      fontWeight: "normal",
       textTransform: "uppercase",
       fontSize: "sm",
     },
