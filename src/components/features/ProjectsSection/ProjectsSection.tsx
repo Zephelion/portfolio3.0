@@ -24,15 +24,14 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
     if (headingRef.current) {
       setDynamicTranslateY(headingRef.current.clientHeight);
     }
-
-    console.log("scroll");
-  }, [setDynamicTranslateY, scrollYProgress]);
+  }, [setDynamicTranslateY]);
 
   return (
-    <Section isFullScreen>
+    <Section height="400vh" isFullScreen>
       <Container
         ref={sectionRef}
-        position="relative"
+        position="sticky"
+        top="0"
         minH="100vh"
         display="flex"
         alignItems="center"
