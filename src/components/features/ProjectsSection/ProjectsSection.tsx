@@ -1,6 +1,11 @@
 import { Section } from "@/components/features";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
-import { useInView, useTransform, useScroll } from "framer-motion";
+import {
+  useInView,
+  useTransform,
+  useScroll,
+  useMotionTemplate,
+} from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const TIMING = 0.5;
@@ -13,12 +18,21 @@ interface ProjectsSectionProps {
 }
 
 export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
-  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [dynamicTranslateY, setDynamicTranslateY] = useState(0);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
-  const { scrollYProgress } = useScroll();
+  const isInView = useInView(containerRef, { once: true, amount: 0.5 });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+  });
+
+  // Interpolate scroll progress to a range of color values (0 to 255 for simplicity)
+  const backgroundColorValue = useTransform(scrollYProgress, [0, 1], [255, 0]);
+
+  // Convert numeric value to a hex code
+  const backgroundColor = useMotionTemplate`rgb(${backgroundColorValue}, ${backgroundColorValue}, ${backgroundColorValue})`;
 
   useEffect(() => {
     if (headingRef.current) {
@@ -27,9 +41,9 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   }, [setDynamicTranslateY]);
 
   return (
-    <Section height="400vh" isFullScreen>
+    <Section ref={sectionRef} position="relative" height="400vh" isFullScreen>
       <Container
-        ref={sectionRef}
+        ref={containerRef}
         position="sticky"
         top="0"
         minH="100vh"
@@ -53,7 +67,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
             <Box
               key={index}
               ref={cardRef}
-              bg="white"
+              bg={backgroundColor.get()}
               border="1px solid"
               borderColor="black"
               height="190px" // hardcoded atm but can be changed

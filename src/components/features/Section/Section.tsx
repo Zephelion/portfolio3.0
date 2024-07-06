@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import { Box, BoxProps, Container } from "@chakra-ui/react";
 
 type SpacingKey =
@@ -25,22 +25,21 @@ const spacingMap = {
   extraLarge: { base: "space-188", md: "space-232" },
 };
 
-export const Section = ({
-  children,
-  spacingTop,
-  spacingBottom,
-  isFullScreen,
-  ...props
-}: SectionProps) => {
-  return (
-    <Box
-      as="section"
-      position="relative"
-      mt={spacingMap[spacingTop || "none"]}
-      mb={spacingMap[spacingBottom || "none"]}
-      {...props}
-    >
-      {isFullScreen ? <>{children}</> : <Container>{children}</Container>}
-    </Box>
-  );
-};
+export const Section = forwardRef<HTMLElement, SectionProps>(
+  ({ children, spacingTop, spacingBottom, isFullScreen, ...props }, ref) => {
+    return (
+      <Box
+        as="section"
+        position="relative"
+        mt={spacingMap[spacingTop || "none"]}
+        mb={spacingMap[spacingBottom || "none"]}
+        ref={ref}
+        {...props}
+      >
+        {isFullScreen ? <>{children}</> : <Container>{children}</Container>}
+      </Box>
+    );
+  }
+);
+
+Section.displayName = "Section";
