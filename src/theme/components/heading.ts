@@ -19,7 +19,8 @@ export const Heading: ComponentStyleConfig = {
       willChange: "transform",
     },
     h2: {
-      fontSize: `clamp(48px, 18vw, 192px)`,
+      fontSize: `clamp(${rem(64)}, 20vw, ${rem(304)})`,
+      lineHeight: "compact",
       fontWeight: "bold",
     },
     h3: {

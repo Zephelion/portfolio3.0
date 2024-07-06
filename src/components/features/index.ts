@@ -10,3 +10,4 @@ export { Loader } from "./Loader";
 export { About } from "./About";
 export { StaggeredText } from "./StaggeredText";
 export { Availability } from "./Availability";
+export { ProjectsSection } from "./ProjectsSection";
