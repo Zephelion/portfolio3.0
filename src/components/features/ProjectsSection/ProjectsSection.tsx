@@ -109,7 +109,9 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   zIndex={i}
                   transform={
                     activeIndex === index
-                      ? `translate(${i * STEP}px, ${i * STEP}px)`
+                      ? `translate(${
+                          index % 2 !== 0 ? -i * STEP : i * STEP
+                        }px, ${i * STEP}px)`
                       : "none"
                   }
                   transition={`transform 0.5s ease ${TIMING}s`}
