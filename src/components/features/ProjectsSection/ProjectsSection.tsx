@@ -9,7 +9,8 @@ import {
 import { useRef, useState, useEffect } from "react";
 
 const TIMING = 0.5;
-const STEP = 40;
+const STEP_COUNT = 3;
+const STEP = 20;
 
 interface ProjectsSectionProps {
   data: {
@@ -27,12 +28,21 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const handleMouseEnter = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveIndex(null);
+  };
 
   // Interpolate scroll progress to a range of color values (0 to 255 for simplicity)
-  const backgroundColorValue = useTransform(scrollYProgress, [0, 1], [255, 0]);
+  // const backgroundColorValue = useTransform(scrollYProgress, [0, 1], [255, 0]);
 
   // Convert numeric value to a hex code
-  const backgroundColor = useMotionTemplate`rgb(${backgroundColorValue}, ${backgroundColorValue}, ${backgroundColorValue})`;
+  // const backgroundColor = useMotionTemplate`rgb(${backgroundColorValue}, ${backgroundColorValue}, ${backgroundColorValue})`;
 
   useEffect(() => {
     if (headingRef.current) {
@@ -62,27 +72,54 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
             projects
           </Text>
         </Heading>
-        <Box>
-          {data.projects.map((project, index) => (
+      </Container>
+      <Container
+        display="flex"
+        flexDir="column"
+        gap="space-44"
+        position="relative"
+        zIndex="9"
+      >
+        {[...data.projects, ...data.projects, ...data.projects].map(
+          (project, index) => (
             <Box
-              key={index}
               ref={cardRef}
-              bg={backgroundColor.get()}
-              border="1px solid"
-              borderColor="black"
+              key={index}
+              position="relative"
               height="190px" // hardcoded atm but can be changed
               width="337px" // hardcoded atm but can be changed
-              position="absolute"
-              zIndex={index}
-              transform={
-                isInView
-                  ? `translate(${index * STEP}px, ${index * STEP}px)`
-                  : "translate(0, 0)"
+              alignSelf={
+                index % 3 === 2
+                  ? "center"
+                  : index % 2 === 0
+                  ? "flex-start"
+                  : "flex-end"
               }
-              transition={`transform 0.5s ease ${isInView ? index * 0.1 : 0}s`}
-            />
-          ))}
-        </Box>
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              {Array.from({ length: STEP_COUNT }, (_, i) => (
+                <Box
+                  key={i}
+                  height="100%"
+                  width="100%"
+                  position="absolute"
+                  border="1px solid"
+                  borderColor="black"
+                  zIndex={i}
+                  transform={
+                    activeIndex === index
+                      ? `translate(${i * STEP}px, ${i * STEP}px)`
+                      : "none"
+                  }
+                  transition={`transform 0.5s ease ${TIMING}s`}
+                >
+                  Step {i + 1}
+                </Box>
+              ))}
+            </Box>
+          )
+        )}
       </Container>
     </Section>
   );

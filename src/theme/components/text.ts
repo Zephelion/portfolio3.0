@@ -6,7 +6,7 @@ export const Text: ComponentStyleConfig = {
   variants: {
     paragraph: {
       fontWeight: "normal",
-      fontSize: `clamp(${rem(18)}, 4vw, ${rem(40)})`,
+      fontSize: `clamp(${rem(14)}, 4vw, ${rem(40)})`,
       lineHeight: "base",
       letterSpacing: "normal",
     },
