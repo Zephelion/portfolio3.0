@@ -106,6 +106,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   position="absolute"
                   border="1px solid"
                   borderColor="black"
+                  bg="white"
                   zIndex={i}
                   transform={
                     activeIndex === index
