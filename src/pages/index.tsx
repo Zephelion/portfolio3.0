@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { Hero, About, ProjectsSection } from "@/components/features";
+import Head from "next/head";
 
 interface PageProps {}
 
