@@ -19,12 +19,15 @@ const projectsData = {
   projects: [
     {
       title: "Plantswap identifier",
+      href: "plantswap-identifier",
     },
     {
       title: "Syncmusic",
+      href: "syncmusic",
     },
     {
       title: "Rijksmusuem",
+      href: "rijksmusuem",
     },
   ],
 };

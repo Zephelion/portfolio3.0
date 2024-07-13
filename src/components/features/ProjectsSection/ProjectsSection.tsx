@@ -1,4 +1,4 @@
-import { Section } from "@/components/features";
+import { Section, ChakraNextLink } from "@/components/features";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 import {
   useInView,
@@ -14,14 +14,14 @@ const STEP = 20;
 
 interface ProjectsSectionProps {
   data: {
-    projects: { title: string }[];
+    projects: { title: string; href: string }[];
   };
 }
 
 export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   const containerRef = useRef(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef(null);
+  // const cardRef = useRef(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [dynamicTranslateY, setDynamicTranslateY] = useState(0);
   const isInView = useInView(containerRef, { once: true, amount: 0.5 });
@@ -82,12 +82,15 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
       >
         {[...data.projects, ...data.projects, ...data.projects].map(
           (project, index) => (
-            <Box
-              ref={cardRef}
+            <ChakraNextLink
+              // ref={cardRef}
               key={index}
+              display="block"
               position="relative"
+              href={project.href}
               height="190px" // hardcoded atm but can be changed
               width="337px" // hardcoded atm but can be changed
+              padding="unset"
               alignSelf={
                 index % 3 === 2
                   ? "center"
@@ -117,10 +120,10 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   }
                   transition={`transform 0.5s ease ${TIMING}s`}
                 >
-                  Step {i + 1}
+                  {project.title}
                 </Box>
               ))}
-            </Box>
+            </ChakraNextLink>
           )
         )}
       </Container>
