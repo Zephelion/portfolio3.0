@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import { Hero, About, ProjectsSection } from "@/components/features";
-import Head from "next/head";
 
 interface PageProps {}
 
@@ -20,14 +19,17 @@ const projectsData = {
   projects: [
     {
       title: "Plantswap identifier",
+      coverImage: "/images/plantswapcover.webp",
       href: "plantswap-identifier",
     },
     {
       title: "Syncmusic",
+      coverImage: "/images/plantswapcover.webp",
       href: "syncmusic",
     },
     {
       title: "Rijksmusuem",
+      coverImage: "/images/plantswapcover.webp",
       href: "rijksmusuem",
     },
   ],

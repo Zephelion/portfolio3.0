@@ -7,6 +7,7 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 
 const TIMING = 0.5;
 const STEP_COUNT = 3;
@@ -14,7 +15,7 @@ const STEP = 20;
 
 interface ProjectsSectionProps {
   data: {
-    projects: { title: string; href: string }[];
+    projects: { title: string; href: string; coverImage: string }[];
   };
 }
 
@@ -88,6 +89,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               display="block"
               position="relative"
               href={project.href}
+              aspectRatio="16/9"
               height="190px" // hardcoded atm but can be changed
               width="337px" // hardcoded atm but can be changed
               padding="unset"
@@ -102,26 +104,23 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               onMouseLeave={handleMouseLeave}
             >
               {Array.from({ length: STEP_COUNT }, (_, i) => (
-                <Box
+                <Image
                   key={i}
-                  height="100%"
-                  width="100%"
-                  position="absolute"
-                  border="1px solid"
-                  borderColor="black"
-                  bg="white"
-                  zIndex={i}
-                  transform={
-                    activeIndex === index
-                      ? `translate(${
-                          index % 2 !== 0 ? -i * STEP : i * STEP
-                        }px, ${i * STEP}px)`
-                      : "none"
-                  }
-                  transition={`transform 0.5s ease ${TIMING}s`}
-                >
-                  {project.title}
-                </Box>
+                  src="/images/plantswapcover.webp"
+                  alt="project"
+                  layout="fill"
+                  objectFit="cover"
+                  style={{
+                    transform:
+                      activeIndex === index
+                        ? `translate(${
+                            index % 2 !== 0 ? -i * STEP : i * STEP
+                          }px, ${i * STEP}px)`
+                        : "none",
+                    transition: `transform 0.5s ease ${TIMING}s`,
+                    opacity: 1 - i / (STEP_COUNT - 1),
+                  }}
+                />
               ))}
             </ChakraNextLink>
           )
