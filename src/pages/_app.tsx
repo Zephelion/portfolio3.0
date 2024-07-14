@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BaseLayout } from "@/components/layouts/BaseLayout";
 import { theme } from "@/theme/theme";
-import { Loader } from "@/components/features";
+import { Loader, CustomCursor } from "@/components/features";
 import { DefaultSeo } from "next-seo";
 import ReactLenis from "lenis/react";
 
@@ -15,6 +15,7 @@ const App = ({ Component: Page, pageProps, router }: AppProps) => {
         <ReactLenis root autoRaf>
           <BaseLayout>
             <Page {...pageProps} />
+            <CustomCursor />
           </BaseLayout>
         </ReactLenis>
         {router.pathname === "/" && <Loader />}
