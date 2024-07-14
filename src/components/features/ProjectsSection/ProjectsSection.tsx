@@ -90,8 +90,8 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               position="relative"
               href={project.href}
               aspectRatio="16/9"
-              height="190px" // hardcoded atm but can be changed
-              width="337px" // hardcoded atm but can be changed
+              height={{ base: "95px", md: "190px" }} // hardcoded atm but can be changed
+              width={{ base: "168.5px", md: "337px" }} // hardcoded atm but can be changed
               padding="unset"
               alignSelf={
                 index % 3 === 2
