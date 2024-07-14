@@ -1,5 +1,5 @@
 import { Section, ChakraNextLink } from "@/components/features";
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { Container, Heading, Text } from "@chakra-ui/react";
 import {
   useInView,
   useTransform,
@@ -106,7 +106,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               {Array.from({ length: STEP_COUNT }, (_, i) => (
                 <Image
                   key={i}
-                  src="/images/plantswapcover.webp"
+                  src={project.coverImage}
                   alt="project"
                   layout="fill"
                   objectFit="cover"
@@ -118,7 +118,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                           }px, ${i * STEP}px)`
                         : "none",
                     transition: `transform 0.5s ease ${TIMING}s`,
-                    opacity: 1 - i / (STEP_COUNT - 1),
+                    opacity: 1 - i * 0.2,
                   }}
                 />
               ))}

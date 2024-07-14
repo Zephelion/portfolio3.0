@@ -24,12 +24,12 @@ const projectsData = {
     },
     {
       title: "Syncmusic",
-      coverImage: "/images/plantswapcover.webp",
+      coverImage: "/images/syncmusiccover.webp",
       href: "syncmusic",
     },
     {
       title: "Rijksmusuem",
-      coverImage: "/images/plantswapcover.webp",
+      coverImage: "/images/rijksmuseumcover.webp",
       href: "rijksmusuem",
     },
   ],
