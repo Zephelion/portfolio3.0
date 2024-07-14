@@ -26,7 +26,7 @@ export const Header = ({ data }: HeaderProps) => {
 
   return (
     <>
-      <Box as="header">
+      <Box as="header" position="fixed" top="0" width="100%" zIndex="10">
         <Container py={{ base: "space-20", md: "space-32" }}>
           <Flex justifyContent="space-between" alignItems="center">
             {/* Logo */}

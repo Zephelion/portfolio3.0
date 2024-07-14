@@ -12,10 +12,10 @@ const App = ({ Component: Page, pageProps, router }: AppProps) => {
       <DefaultSeo {...pageProps.seo} />
 
       <ChakraProvider theme={theme} resetCSS>
+        <CustomCursor />
         <ReactLenis root autoRaf>
           <BaseLayout>
             <Page {...pageProps} />
-            <CustomCursor />
           </BaseLayout>
         </ReactLenis>
         {router.pathname === "/" && <Loader />}
