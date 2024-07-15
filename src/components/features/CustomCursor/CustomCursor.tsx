@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import { useSpring, motion } from "framer-motion";
+import { useEffect } from "react";
+import { useSpring } from "framer-motion";
+import { MotionBox } from "../MotionBox";
 
 export const CustomCursor = () => {
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-
   // Framer Motion spring animation for cursor position
   const x = useSpring(0, { stiffness: 300, damping: 30 });
   const y = useSpring(0, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
     const updateCursorPos = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
       // Update spring values
       x.set(e.clientX);
       y.set(e.clientY);
@@ -22,7 +20,7 @@ export const CustomCursor = () => {
   }, [x, y]); // Dependencies updated to include x and y springs
 
   return (
-    <motion.div
+    <MotionBox
       style={{
         position: "fixed",
         left: x,

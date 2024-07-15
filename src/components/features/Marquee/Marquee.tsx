@@ -1,4 +1,4 @@
-import { Flex, Heading, chakra } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import {
   MotionValue,
   useAnimationFrame,
