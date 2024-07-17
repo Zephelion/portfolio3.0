@@ -42,6 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       project,
+      // seo: project?.seo,
     },
   };
 };
