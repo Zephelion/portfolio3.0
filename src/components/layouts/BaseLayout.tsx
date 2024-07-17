@@ -1,6 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Header, Footer } from "@/components/features";
+import { Analytics } from "@vercel/analytics/react";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -29,6 +30,7 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
       <Header data={headerData} />
       <Box as="main" display="block" mt={{ base: "112px", md: "160px" }}>
         {children}
+        <Analytics />
       </Box>
       <Footer />
     </Flex>
