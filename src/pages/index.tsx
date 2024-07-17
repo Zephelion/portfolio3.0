@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { Hero, About, ProjectsSection } from "@/components/features";
+import { projects } from "@/data/projects";
 
 interface PageProps {}
 
@@ -15,24 +16,8 @@ const aboutData = {
   content: `Hi there! I am Russell Numo currently attending the University of applied sciences in Amsterdam where I am following the course Communication Multimedia Design. I have a bit of an affinity when it comes to frontend development especially for the web :). I am always eager to learn new things and immersive myself in new technologies. Feel free to poke around my site—who knows, you might find something cool or even a hidden Easter egg! Enjoy your stay!`,
 };
 
-const projectsData = {
-  projects: [
-    {
-      title: "Plantswap identifier",
-      coverImage: "/images/plantswapcover.webp",
-      href: "plantswap-identifier",
-    },
-    {
-      title: "Syncmusic",
-      coverImage: "/images/syncmusiccover.webp",
-      href: "syncmusic",
-    },
-    {
-      title: "Rijksmusuem",
-      coverImage: "/images/rijksmuseumcover.webp",
-      href: "rijksmusuem",
-    },
-  ],
+export const projectsData = {
+  projects,
 };
 
 const Page: NextPage<PageProps> = () => {
