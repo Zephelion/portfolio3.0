@@ -14,6 +14,10 @@ interface Project {
 }
 
 const Page: NextPage<PageProps> = ({ project }) => {
+  if (!project) {
+    return null;
+  }
+
   const { title } = project;
   return (
     <>
@@ -30,14 +34,14 @@ const fetchProjectData = async (slug: string) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   // Check if `context.params` is defined
-  if (!context.params) {
+  if (!context.params || typeof context.params.slug !== "string") {
     return {
       notFound: true,
     };
   }
 
   const { slug } = context.params;
-  const project = await fetchProjectData(slug as string); // Type assertion is safe here
+  const project = await fetchProjectData(slug);
 
   return {
     props: {
