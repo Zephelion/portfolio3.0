@@ -52,11 +52,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = [
-    { params: { slug: "plantswap-identifier" } },
-    { params: { slug: "syncmusic" } },
-    { params: { slug: "rijksmusuem" } },
-  ];
+  const paths = projects.map((project) => ({
+    params: { slug: project.href },
+  }));
 
   return {
     paths,
