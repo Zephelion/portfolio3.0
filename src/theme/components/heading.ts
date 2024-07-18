@@ -11,7 +11,6 @@ export const Heading: ComponentStyleConfig = {
     h1: {
       display: "inline-block",
       w: "max-content",
-      color: "black",
       pr: { base: "space-24", md: "space-48" },
       fontSize: `clamp(${rem(64)}, 20vw, ${rem(304)})`,
       lineHeight: "compact !important",

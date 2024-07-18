@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { Project } from "@/pages/[slug]";
 
 const TIMING = 0.5;
 const STEP_COUNT = 3;
@@ -15,7 +16,7 @@ const STEP = 20;
 
 interface ProjectsSectionProps {
   data: {
-    projects: { title: string; href: string; coverImage: string }[];
+    projects: Project[];
   };
 }
 
@@ -31,12 +32,14 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleMouseEnter = (index: number) => {
+  const handleMouseEnter = (index: number, bg: string) => {
     setActiveIndex(index);
+    document.body.style.backgroundColor = bg;
   };
 
   const handleMouseLeave = () => {
     setActiveIndex(null);
+    document.body.style.backgroundColor = "";
   };
 
   // Interpolate scroll progress to a range of color values (0 to 255 for simplicity)
@@ -100,7 +103,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   ? "flex-start"
                   : "flex-end"
               }
-              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseEnter={() => handleMouseEnter(index, project.bg)}
               onMouseLeave={handleMouseLeave}
             >
               {Array.from({ length: STEP_COUNT }, (_, i) => (

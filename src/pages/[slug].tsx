@@ -6,9 +6,10 @@ interface PageProps {
   project: Project;
 }
 
-interface Project {
+export interface Project {
   title: string;
   coverImage: string;
+  bg: string;
   href: string;
   description: string;
 }
