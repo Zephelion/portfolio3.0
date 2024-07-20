@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Project } from "@/pages/[slug]";
+import { Project } from "@/types";
 
 const TIMING = 0.5;
 const STEP_COUNT = 3;
@@ -32,14 +32,14 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleMouseEnter = (index: number, bg: string) => {
+  const handleMouseEnter = (index: number, className: string) => {
     setActiveIndex(index);
-    document.body.style.backgroundColor = bg;
+    document.body.classList.add(className);
   };
 
   const handleMouseLeave = () => {
     setActiveIndex(null);
-    document.body.style.backgroundColor = "";
+    document.body.classList.remove("plantswap", "syncmusic", "rijksmusuem");
   };
 
   // Interpolate scroll progress to a range of color values (0 to 255 for simplicity)
@@ -70,7 +70,6 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
             display="block"
             position="relative"
             transform={`translateY(${isInView ? 0 : dynamicTranslateY}px)`}
-            //In order to make it staggered, we need to add a delay to the transition based on the index
             transition={`transform 0.5s ease ${TIMING}s`}
           >
             projects
@@ -103,7 +102,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   ? "flex-start"
                   : "flex-end"
               }
-              onMouseEnter={() => handleMouseEnter(index, project.bg)}
+              onMouseEnter={() => handleMouseEnter(index, project.className)}
               onMouseLeave={handleMouseLeave}
             >
               {Array.from({ length: STEP_COUNT }, (_, i) => (

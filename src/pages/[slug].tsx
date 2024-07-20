@@ -1,17 +1,10 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Heading } from "@chakra-ui/react";
 import { projects } from "@/data/projects";
+import { Project } from "@/types";
 
 interface PageProps {
   project: Project;
-}
-
-export interface Project {
-  title: string;
-  coverImage: string;
-  bg: string;
-  href: string;
-  description: string;
 }
 
 const Page: NextPage<PageProps> = ({ project }) => {
