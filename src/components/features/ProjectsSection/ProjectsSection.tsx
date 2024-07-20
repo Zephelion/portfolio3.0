@@ -1,11 +1,6 @@
 import { Section, ChakraNextLink } from "@/components/features";
 import { Container, Heading, Text } from "@chakra-ui/react";
-import {
-  useInView,
-  useTransform,
-  useScroll,
-  useMotionTemplate,
-} from "framer-motion";
+import { useInView, useScroll } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Project } from "@/types";
@@ -23,13 +18,9 @@ interface ProjectsSectionProps {
 export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   const containerRef = useRef(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  // const cardRef = useRef(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [dynamicTranslateY, setDynamicTranslateY] = useState(0);
   const isInView = useInView(containerRef, { once: true, amount: 0.5 });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-  });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (index: number, className: string) => {
@@ -37,16 +28,10 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
     document.body.classList.add(className);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (className: string) => {
     setActiveIndex(null);
-    document.body.classList.remove("plantswap", "syncmusic", "rijksmusuem");
+    document.body.classList.remove(className);
   };
-
-  // Interpolate scroll progress to a range of color values (0 to 255 for simplicity)
-  // const backgroundColorValue = useTransform(scrollYProgress, [0, 1], [255, 0]);
-
-  // Convert numeric value to a hex code
-  // const backgroundColor = useMotionTemplate`rgb(${backgroundColorValue}, ${backgroundColorValue}, ${backgroundColorValue})`;
 
   useEffect(() => {
     if (headingRef.current) {
@@ -86,7 +71,6 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
         {[...data.projects, ...data.projects, ...data.projects].map(
           (project, index) => (
             <ChakraNextLink
-              // ref={cardRef}
               key={index}
               display="block"
               position="relative"
@@ -103,7 +87,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                   : "flex-end"
               }
               onMouseEnter={() => handleMouseEnter(index, project.className)}
-              onMouseLeave={handleMouseLeave}
+              onMouseLeave={() => handleMouseLeave(project.className)}
             >
               {Array.from({ length: STEP_COUNT }, (_, i) => (
                 <Image
