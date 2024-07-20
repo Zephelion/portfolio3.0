@@ -24,6 +24,10 @@ const headerData = {
   ],
 };
 
+const footerData = {
+  text: "Thanks for visiting! if you are curious to know more about me, feel free to send me a message on my provided socials.",
+};
+
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <Flex flexDir="column">
@@ -32,7 +36,7 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
         {children}
         <Analytics />
       </Box>
-      <Footer />
+      <Footer data={footerData} />
     </Flex>
   );
 };
