@@ -3,7 +3,7 @@ export const projects = [
     title: "Plantswap identifier",
     coverImage: "/images/plantswapcover.webp",
     href: "plantswap-identifier",
-    bg: "#00CD8E",
+    className: "plantswap",
     description:
       "A web application that allows users to identify plants by uploading an image of the plant.",
     seo: {
@@ -18,7 +18,7 @@ export const projects = [
     title: "Syncmusic",
     coverImage: "/images/syncmusiccover.webp",
     href: "syncmusic",
-    bg: "#e73c7e",
+    className: "syncmusic",
     description:
       "A web application that allows users to listen to music together in real-time.",
     seo: {
@@ -33,7 +33,7 @@ export const projects = [
     title: "Rijksmusuem",
     coverImage: "/images/rijksmuseumcover.webp",
     href: "rijksmusuem",
-    bg: "#000000",
+    className: "rijksmusuem",
     description:
       "A web application that allows users to explore the Rijksmusuem collection.",
     seo: {

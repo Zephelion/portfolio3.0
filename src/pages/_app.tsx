@@ -5,6 +5,7 @@ import { theme } from "@/theme/theme";
 import { Loader, CustomCursor } from "@/components/features";
 import { DefaultSeo } from "next-seo";
 import ReactLenis from "lenis/react";
+import "@/styles/globals.css";
 
 const App = ({ Component: Page, pageProps, router }: AppProps) => {
   return (
