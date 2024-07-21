@@ -31,8 +31,9 @@ export const Footer = ({ data }: FooterProps) => {
         display="flex"
         flexDir={{ base: "column", md: "row" }}
         justifyContent={{ md: "space-between" }}
+        mb="space-80"
       >
-        <Box>
+        <Box mb="space-40">
           {lines.map((line, index) => (
             <StaggeredText
               key={index}
