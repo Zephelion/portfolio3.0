@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Header, Footer } from "@/components/features";
 import { Analytics } from "@vercel/analytics/react";
+import { socials } from "@/data/socials";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -14,13 +15,26 @@ const headerData = {
     { title: "Projects", href: "/projects" },
     { title: "Contact", href: "/contact" },
   ],
-  socials: [
-    { title: "GitHub", href: "https://github.com/Zephelion" },
+  socials,
+};
+
+const footerData = {
+  text: "Thanks for visiting! if you are curious to know more about me, feel free to send me a message on my provided socials.",
+  contactInfo: [
+    { heading: "Socials", info: socials },
     {
-      title: "LinkedIn",
-      href: "https://www.linkedin.com/in/russell-numo-a37810231/",
+      heading: "Contact",
+      info: [
+        {
+          title: "russellnumo@outlook.com",
+          href: "mailto:russellnumo@outlook.com",
+        },
+        {
+          title: "+31 6 36 09 69 43",
+          href: "tel:+31636096943",
+        },
+      ],
     },
-    { title: "Instagram", href: "https://www.instagram.com/russl_on/" },
   ],
 };
 
@@ -32,7 +46,7 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
         {children}
         <Analytics />
       </Box>
-      <Footer />
+      <Footer data={footerData} />
     </Flex>
   );
 };

@@ -30,7 +30,11 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
 
   const handleMouseLeave = (className: string) => {
     setActiveIndex(null);
-    document.body.classList.remove(className);
+    document.body.classList.remove(
+      className || "plantswap",
+      "rijksmusuem",
+      "syncmusic"
+    );
   };
 
   useEffect(() => {
