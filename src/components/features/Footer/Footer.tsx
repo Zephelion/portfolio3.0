@@ -1,17 +1,24 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, Flex, Link, Heading, chakra } from "@chakra-ui/react";
 import { StaggeredText } from "@/components/features";
 import { splitContentIntoLines } from "@/utils";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { LinkProps } from "@/types";
 
 interface FooterProps {
   data: {
     text: string;
+    contactInfo: ContactInfo[];
   };
 }
 
+interface ContactInfo {
+  heading: string;
+  info: string[] | LinkProps[];
+}
+
 export const Footer = ({ data }: FooterProps) => {
-  const { text } = data;
+  const { text, contactInfo } = data;
   const footerRef = useRef(null);
   const currentYear = new Date().getFullYear();
   const isInView = useInView(footerRef, { once: true, amount: 0.5 });
@@ -20,7 +27,11 @@ export const Footer = ({ data }: FooterProps) => {
 
   return (
     <Box as="footer" ref={footerRef}>
-      <Container>
+      <Container
+        display="flex"
+        flexDir={{ base: "column", md: "row" }}
+        justifyContent={{ md: "space-between" }}
+      >
         <Box>
           {lines.map((line, index) => (
             <StaggeredText
@@ -31,8 +42,43 @@ export const Footer = ({ data }: FooterProps) => {
             />
           ))}
         </Box>
+        <Flex gap="space-40" justifyContent={{ base: "space-between" }}>
+          {contactInfo.map((info, index) => (
+            <Box key={index}>
+              <Heading>{info.heading}</Heading>
+              <Flex as="nav" flexDir="column">
+                {info.info.map((item, index) => (
+                  <StyledLink
+                    key={index}
+                    href={typeof item === "string" ? "" : item.href}
+                    target="_blank"
+                    fontWeight={200}
+                  >
+                    {typeof item === "string" ? item : item.title}
+                  </StyledLink>
+                ))}
+              </Flex>
+            </Box>
+          ))}
+        </Flex>
       </Container>
-      <Container>©{currentYear} Russell Numo</Container>
+      {/* Bottom part of the footer */}
+      <Container display="flex" justifyContent="space-between">
+        <StyledFooterLabel>©{currentYear} Russell Numo</StyledFooterLabel>
+        <StyledFooterLabel>Design by me</StyledFooterLabel>
+      </Container>
     </Box>
   );
 };
+
+const StyledFooterLabel = chakra("span", {
+  baseStyle: {
+    textTransform: "uppercase",
+  },
+});
+
+const StyledLink = chakra(Link, {
+  baseStyle: {
+    fontFamily: "system-ui",
+  },
+});
