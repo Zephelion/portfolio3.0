@@ -2,6 +2,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Heading } from "@chakra-ui/react";
 import { projects } from "@/data/projects";
 import { Project } from "@/types";
+import { Curtain } from "@/components/features";
 
 interface PageProps {
   project: Project;
