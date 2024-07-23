@@ -1,5 +1,10 @@
 import { NextPage } from "next";
-import { Hero, About, ProjectsSection } from "@/components/features";
+import {
+  Hero,
+  About,
+  ProjectsSection,
+  IndexPageTransition,
+} from "@/components/features";
 import { projects } from "@/data/projects";
 
 interface PageProps {}
@@ -22,11 +27,11 @@ const projectsData = {
 
 const Page: NextPage<PageProps> = () => {
   return (
-    <>
+    <IndexPageTransition>
       <Hero data={heroData} />
       <About data={aboutData} />
       <ProjectsSection data={projectsData} />
-    </>
+    </IndexPageTransition>
   );
 };
 
