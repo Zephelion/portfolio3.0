@@ -18,7 +18,7 @@ const App = ({ Component: Page, pageProps, router }: AppProps) => {
         <ReactLenis root autoRaf>
           <BaseLayout>
             <AnimatePresence mode="wait">
-              <Page key={router.route} {...pageProps} />
+              <Page key={router.asPath} {...pageProps} />
             </AnimatePresence>
           </BaseLayout>
         </ReactLenis>
