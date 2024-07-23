@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
+// https://blog.olivierlarose.com/articles/nextjs-page-transition-guide
 interface ProjectPageTransitionProps {
   children: ReactNode;
 }
@@ -22,23 +23,28 @@ export const ProjectPageTransition = ({
   };
 
   const expand = {
-    initial: { top: 0 },
+    initial: {
+      top: 0,
+    },
+
     enter: (i: number) => ({
-      top: "100%",
+      top: "100vh",
+
       transition: {
-        duration: 0.5,
-        delay: i * 0.1,
+        duration: 0.4,
+        delay: 0.05 * i,
+        ease: [0.215, 0.61, 0.355, 1],
       },
-      transitionEnd: {
-        height: 0,
-        top: 0,
-      },
+      transitionEnd: { height: "0", top: "0" },
     }),
+
     exit: (i: number) => ({
-      height: "100%",
+      height: "100vh",
+
       transition: {
-        duration: 0.5,
-        delay: i * 0.1,
+        duration: 0.4,
+        delay: 0.05 * i,
+        ease: [0.215, 0.61, 0.355, 1],
       },
     }),
   };
