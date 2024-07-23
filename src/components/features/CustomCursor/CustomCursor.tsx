@@ -3,6 +3,8 @@ import { useSpring } from "framer-motion";
 import { MotionBox } from "../MotionBox";
 
 export const CustomCursor = () => {
+  const [cursorWidth, cursorHeight] = [10, 10];
+
   // Framer Motion spring animation for cursor position
   const x = useSpring(0, { stiffness: 300, damping: 30 });
   const y = useSpring(0, { stiffness: 300, damping: 30 });
@@ -10,14 +12,14 @@ export const CustomCursor = () => {
   useEffect(() => {
     const updateCursorPos = (e: MouseEvent) => {
       // Update spring values
-      x.set(e.clientX);
-      y.set(e.clientY);
+      x.set(e.clientX - cursorWidth / 2);
+      y.set(e.clientY - cursorHeight / 2);
     };
 
     window.addEventListener("mousemove", updateCursorPos);
 
     return () => window.removeEventListener("mousemove", updateCursorPos);
-  }, [x, y]); // Dependencies updated to include x and y springs
+  }, [x, y, cursorWidth, cursorHeight]); // Dependencies updated to include x and y springs
 
   return (
     <MotionBox
@@ -25,8 +27,8 @@ export const CustomCursor = () => {
         position: "fixed",
         left: x,
         top: y,
-        height: "10px",
-        width: "10px",
+        height: `${cursorHeight}px`,
+        width: `${cursorWidth}px`,
         backgroundColor: "black",
         pointerEvents: "none",
         zIndex: 100,
