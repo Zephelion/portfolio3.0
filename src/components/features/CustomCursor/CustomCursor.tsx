@@ -31,7 +31,7 @@ export const CustomCursor = () => {
         width: `${cursorWidth}px`,
         backgroundColor: "black",
         pointerEvents: "none",
-        zIndex: 100,
+        zIndex: `customCursor`,
       }}
     />
   );
