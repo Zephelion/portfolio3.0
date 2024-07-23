@@ -2,6 +2,8 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Heading } from "@chakra-ui/react";
 import { projects } from "@/data/projects";
 import { Project } from "@/types";
+import { ProjectPageTransition } from "@/components/features";
+import Link from "next/link";
 
 interface PageProps {
   project: Project;
@@ -14,9 +16,12 @@ const Page: NextPage<PageProps> = ({ project }) => {
 
   const { title } = project;
   return (
-    <>
+    <ProjectPageTransition>
       <Heading size="h1">{title}</Heading>
-    </>
+      <Link href="/plantswap-identifier">plantswap identifier</Link>
+      <Link href="/syncmusic">syncmusic</Link>
+      <Link href="/rijksmusuem">rijksmuseum</Link>
+    </ProjectPageTransition>
   );
 };
 

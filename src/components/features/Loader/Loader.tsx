@@ -40,7 +40,7 @@ export const Loader = () => {
       justifyContent="flex-end"
       transform={shouldAnimate ? "translateY(-100vh)" : "translateY(0)"}
       transition="transform 1s cubic-bezier(0.4, 0.0, 0.2, 1)"
-      zIndex={10}
+      zIndex="loader"
     >
       <Flex direction="column">
         <Heading

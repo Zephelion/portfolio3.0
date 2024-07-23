@@ -70,7 +70,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
         flexDir="column"
         gap="space-44"
         position="relative"
-        zIndex="9"
+        zIndex="projectSection"
       >
         {[...data.projects, ...data.projects, ...data.projects].map(
           (project, index) => (

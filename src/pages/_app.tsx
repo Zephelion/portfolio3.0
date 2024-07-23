@@ -5,6 +5,7 @@ import { theme } from "@/theme/theme";
 import { Loader, CustomCursor } from "@/components/features";
 import { DefaultSeo } from "next-seo";
 import ReactLenis from "lenis/react";
+import { AnimatePresence } from "framer-motion";
 import "@/styles/globals.css";
 
 const App = ({ Component: Page, pageProps, router }: AppProps) => {
@@ -16,7 +17,9 @@ const App = ({ Component: Page, pageProps, router }: AppProps) => {
         <CustomCursor />
         <ReactLenis root autoRaf>
           <BaseLayout>
-            <Page {...pageProps} />
+            <AnimatePresence mode="wait">
+              <Page key={router.asPath} {...pageProps} />
+            </AnimatePresence>
           </BaseLayout>
         </ReactLenis>
         {router.pathname === "/" && <Loader />}

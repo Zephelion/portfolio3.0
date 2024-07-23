@@ -13,3 +13,4 @@ export { Availability } from "./Availability";
 export { ProjectsSection } from "./ProjectsSection";
 export { ChakraNextLink } from "./ChakraNextLink";
 export { CustomCursor } from "./CustomCursor";
+export { ProjectPageTransition } from "./ProjectPageTransition";

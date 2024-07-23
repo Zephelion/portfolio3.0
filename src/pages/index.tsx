@@ -16,7 +16,7 @@ const aboutData = {
   content: `Hi there! I am Russell Numo currently attending the University of applied sciences in Amsterdam where I am following the course Communication and Multimedia Design (CMD). I have a bit of an affinity when it comes to frontend development especially for the web :). I am always eager to learn new things and immersive myself in new technologies. Feel free to poke around my site—who knows, you might find something cool or even a hidden Easter egg! Enjoy your stay!`,
 };
 
-export const projectsData = {
+const projectsData = {
   projects,
 };
 
