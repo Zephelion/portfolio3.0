@@ -1,6 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { anim } from "@/utils";
 
 // https://blog.olivierlarose.com/articles/nextjs-page-transition-guide
 interface ProjectPageTransitionProps {
@@ -12,16 +13,6 @@ const COLUMNS = 4;
 export const ProjectPageTransition = ({
   children,
 }: ProjectPageTransitionProps) => {
-  const anim = (variants: any, custom: any) => {
-    return {
-      initial: "initial",
-      animate: "enter",
-      exit: "exit",
-      variants,
-      custom,
-    };
-  };
-
   const expand = {
     initial: {
       top: 0,

@@ -83,6 +83,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               height={{ base: "95px", md: "190px" }} // hardcoded atm but can be changed
               width={{ base: "168.5px", md: "337px" }} // hardcoded atm but can be changed
               padding="unset"
+              scroll={false}
               alignSelf={
                 index % 3 === 2
                   ? "center"
