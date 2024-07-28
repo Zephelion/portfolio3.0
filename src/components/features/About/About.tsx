@@ -18,8 +18,6 @@ export const About = ({ data }: AboutProps) => {
 
   const lines = splitContentIntoLines(content, 50);
 
-  console.log(isInView);
-
   return (
     <Section spacingBottom="large">
       <Box ref={paragraphRef}>
