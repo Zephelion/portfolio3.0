@@ -8,7 +8,7 @@ interface ProjectPageTransitionProps {
   children: ReactNode;
 }
 
-const COLUMNS = 4;
+const COLUMNS = 8;
 
 export const ProjectPageTransition = ({
   children,
