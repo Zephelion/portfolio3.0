@@ -20,7 +20,7 @@ export const About = ({ data }: AboutProps) => {
 
   return (
     <Section spacingBottom="large">
-      <Box ref={paragraphRef}>
+      <Text ref={paragraphRef}>
         {lines.map((line, index) => (
           <StaggeredText
             key={index}
@@ -29,7 +29,7 @@ export const About = ({ data }: AboutProps) => {
             index={index}
           />
         ))}
-      </Box>
+      </Text>
     </Section>
   );
 };

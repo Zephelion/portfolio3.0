@@ -8,7 +8,6 @@ interface StaggeredTextProps {
 }
 
 const TIMING = 0.1;
-const TRANSLATE_Y = 50;
 
 export const StaggeredText = ({
   line,
@@ -26,7 +25,7 @@ export const StaggeredText = ({
   }, [setDynamicTranslateY]);
 
   return (
-    <Box overflow="hidden">
+    <Box as="span" display="block" overflow="hidden">
       <Text
         as="span"
         ref={lineRef}
