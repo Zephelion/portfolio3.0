@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { anim } from "@/utils";
@@ -8,11 +8,11 @@ interface ProjectPageTransitionProps {
   children: ReactNode;
 }
 
-const COLUMNS = 12;
-
 export const ProjectPageTransition = ({
   children,
 }: ProjectPageTransitionProps) => {
+  const COLUMNS = useBreakpointValue({ base: 8, md: 12 }) ?? 12; // Default to 12 columns
+
   const expand = {
     initial: {
       top: 0,
