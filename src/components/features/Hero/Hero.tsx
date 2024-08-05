@@ -13,7 +13,7 @@ export const Hero = ({ data }: HeroProps) => {
 
   return (
     <Section
-      height={{ base: "calc(100dvh - 112px)", md: "calc(100vh - 160px)" }}
+      height={{ base: "calc(87vh - 112px)", md: "calc(100vh - 160px)" }}
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
