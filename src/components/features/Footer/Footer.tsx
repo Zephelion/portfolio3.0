@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Link, Heading, chakra } from "@chakra-ui/react";
-import { StaggeredText } from "@/components/features";
+import { StaggeredLine } from "@/components/features";
 import { splitContentIntoLines } from "@/utils";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
@@ -35,7 +35,7 @@ export const Footer = ({ data }: FooterProps) => {
       >
         <Box mb="space-40">
           {lines.map((line, index) => (
-            <StaggeredText
+            <StaggeredLine
               key={index}
               line={line}
               isInView={isInView}

@@ -1,19 +1,19 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 
-interface StaggeredTextProps {
+interface StaggeredLineProps {
   line: string;
-  isInView: boolean;
   index: number;
+  isInView?: boolean;
 }
 
 const TIMING = 0.1;
 
-export const StaggeredText = ({
+export const StaggeredLine = ({
   line,
-  isInView,
   index,
-}: StaggeredTextProps) => {
+  isInView,
+}: StaggeredLineProps) => {
   const lineRef = useRef<HTMLSpanElement>(null);
 
   const [dynamicTranslateY, setDynamicTranslateY] = useState(0);

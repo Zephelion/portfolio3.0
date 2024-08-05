@@ -1,35 +1,33 @@
-import { Text, useBreakpointValue } from "@chakra-ui/react";
-import { Section, StaggeredText } from "@/components/features";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { Container, useBreakpointValue } from "@chakra-ui/react";
+import { Section, StaggeredParagraph } from "@/components/features";
 import { splitContentIntoLines } from "@/utils";
 
 interface AboutProps {
   data: {
-    content: string;
+    content: string[];
   };
 }
 
 export const About = ({ data }: AboutProps) => {
   const { content } = data;
-  const paragraphRef = useRef(null);
-  const isInView = useInView(paragraphRef, { once: true, amount: 0.5 });
   const isMobile = useBreakpointValue({ base: 25, md: 50 });
 
-  const lines = splitContentIntoLines(content, isMobile);
-
   return (
-    <Section spacingBottom="large">
-      <Text ref={paragraphRef}>
-        {lines.map((line, index) => (
-          <StaggeredText
-            key={index}
-            line={line}
-            isInView={isInView}
-            index={index}
-          />
-        ))}
-      </Text>
+    <Section isFullScreen>
+      <Container display="flex" flexDir="column" gap="space-30">
+        {content.map((paragraph, paragraphIndex) => {
+          const lines = splitContentIntoLines(paragraph, isMobile);
+          return (
+            <StaggeredParagraph
+              key={paragraphIndex}
+              lines={lines}
+              alignSelf={
+                paragraphIndex === 1 ? { base: "", md: "flex-end" } : ""
+              }
+            />
+          );
+        })}
+      </Container>
     </Section>
   );
 };
