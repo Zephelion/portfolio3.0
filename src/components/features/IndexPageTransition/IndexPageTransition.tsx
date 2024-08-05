@@ -10,17 +10,13 @@ interface ProjectPageTransitionProps {
   children: ReactNode;
 }
 
-type GenericType = {
-  [key: string]: string;
-};
-
-const routes: GenericType = {
+const routes: Record<string, string> = {
   "plantswap-identifier": "PlantSwap",
   syncmusic: "SyncMusic",
   rijksmusuem: "RijksMuseum",
 };
 
-const backgrounds: GenericType = {
+const backgrounds: Record<string, string> = {
   "plantswap-identifier": "plantswap",
   syncmusic: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
   rijksmusuem: "black",

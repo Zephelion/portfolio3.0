@@ -12,7 +12,7 @@ export const StaggeredParagraph = ({
   ...props
 }: StaggeredParagraphProps) => {
   const paragraphRef = useRef(null);
-  const isInView = useInView(paragraphRef, { once: true, amount: 0.5 });
+  const isInView = useInView(paragraphRef, { once: true, amount: 0.8 });
 
   return (
     <Text ref={paragraphRef} {...props}>
