@@ -1,13 +1,8 @@
-import { Section, ChakraNextLink } from "@/components/features";
+import { Section, ParallaxCard } from "@/components/features";
 import { Container, Heading, Text } from "@chakra-ui/react";
-import { useInView, useScroll } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { Project } from "@/types";
-
-const TIMING = 0.5;
-const STEP_COUNT = 3;
-const STEP = 20;
 
 interface ProjectsSectionProps {
   data: {
@@ -59,7 +54,7 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
             display="block"
             position="relative"
             transform={`translateY(${isInView ? 0 : dynamicTranslateY}px)`}
-            transition={`transform 0.5s ease ${TIMING}s`}
+            transition={`transform 0.5s ease 0.5s`}
           >
             projects
           </Text>
@@ -74,46 +69,13 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
       >
         {[...data.projects, ...data.projects, ...data.projects].map(
           (project, index) => (
-            <ChakraNextLink
+            <ParallaxCard
               key={index}
-              display="block"
-              position="relative"
               href={project.href}
-              aspectRatio="16/9"
-              height={{ base: "95px", md: "190px" }} // hardcoded atm but can be changed
-              width={{ base: "168.5px", md: "337px" }} // hardcoded atm but can be changed
-              padding="unset"
-              scroll={false}
-              alignSelf={
-                index % 3 === 2
-                  ? "center"
-                  : index % 2 === 0
-                  ? "flex-start"
-                  : "flex-end"
-              }
-              onMouseEnter={() => handleMouseEnter(index, project.className)}
-              onMouseLeave={() => handleMouseLeave(project.className)}
-            >
-              {Array.from({ length: STEP_COUNT }, (_, i) => (
-                <Image
-                  key={i}
-                  src={project.coverImage}
-                  alt="project"
-                  layout="fill"
-                  objectFit="cover"
-                  style={{
-                    transform:
-                      activeIndex === index
-                        ? `translate(${
-                            index % 2 !== 0 ? -i * STEP : i * STEP
-                          }px, ${i * STEP}px)`
-                        : "none",
-                    transition: `transform 0.5s ease ${TIMING}s`,
-                    opacity: 1 - i * 0.2,
-                  }}
-                />
-              ))}
-            </ChakraNextLink>
+              index={index}
+              coverImage={project.coverImage}
+              className={project.className}
+            />
           )
         )}
       </Container>
