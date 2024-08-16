@@ -16,21 +16,6 @@ export const ProjectsSection = ({ data }: ProjectsSectionProps) => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [dynamicTranslateY, setDynamicTranslateY] = useState(0);
   const isInView = useInView(containerRef, { once: true, amount: 0.5 });
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number, className: string) => {
-    setActiveIndex(index);
-    document.body.classList.add(className);
-  };
-
-  const handleMouseLeave = (className: string) => {
-    setActiveIndex(null);
-    document.body.classList.remove(
-      className || "plantswap",
-      "rijksmusuem",
-      "syncmusic"
-    );
-  };
 
   useEffect(() => {
     if (headingRef.current) {
