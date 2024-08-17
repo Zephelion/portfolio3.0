@@ -1,6 +1,6 @@
 import { ChakraNextLink } from "@/components/features";
 import Image from "next/image";
-import { useState, useRef, use } from "react";
+import { useState, useRef } from "react";
 import { useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { MotionBox } from "../MotionBox";
 
