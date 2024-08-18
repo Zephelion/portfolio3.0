@@ -39,7 +39,9 @@ export const Loader = () => {
 
   useEffect(() => {
     // Disable scrolling
-    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    document.body.style.height = "100%";
 
     // Set random quote
     setQuote(getRandomElement(quotes));
@@ -49,9 +51,11 @@ export const Loader = () => {
         if (prevProgress >= 100) {
           clearInterval(interval);
 
-          // Enable scrolling
-          document.body.style.overflow = "auto";
-          setTimeout(() => setShouldAnimate(true), 1500); // Wait for 1.5s before animating out
+          setTimeout(() => {
+            // Enable scrolling
+            document.body.style.position = "relative";
+            setShouldAnimate(true);
+          }, 1500); // Wait for 5s before animating out
           return 100;
         }
         return prevProgress + 1;
