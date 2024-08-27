@@ -30,6 +30,10 @@ const quotes: Quote[] = [
     text: "This portfolio is a work in progress, I'm always learning",
     weight: 2,
   },
+  {
+    text: "If you were to describe me in a few words it would be, Bijdehand, Eigenwijs and Sarcastisch",
+    weight: 2,
+  },
 ];
 
 export const Loader = () => {
