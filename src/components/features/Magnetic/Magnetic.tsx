@@ -1,5 +1,4 @@
-import { MotionBox } from "../MotionBox";
-import { ReactNode, useState, useRef, MouseEventHandler } from "react";
+import { ReactNode, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 interface MagneticProps {
