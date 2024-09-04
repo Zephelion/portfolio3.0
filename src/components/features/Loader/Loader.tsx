@@ -34,6 +34,10 @@ const quotes: Quote[] = [
     text: "If you were to describe me in a few words it would be, Bijdehand, Eigenwijs and Sarcastisch",
     weight: 2,
   },
+  {
+    text: "There's beauty in the struggle, ugliness in the success - Elston Barrow",
+    weight: 2,
+  },
 ];
 
 export const Loader = () => {
