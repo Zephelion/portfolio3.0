@@ -32,6 +32,7 @@ export const Magnetic = ({ children }: MagneticProps) => {
       onMouseLeave={mouseLeave}
       animate={{ x, y }}
       transition={{ type: "spring", stiffness: 200, damping: 10 }}
+      style={{ padding: "1rem" }}
     >
       {children}
     </motion.div>
