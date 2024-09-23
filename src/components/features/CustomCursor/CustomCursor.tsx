@@ -35,9 +35,10 @@ export const CustomCursor = () => {
         top: y,
         height: `${cursorHeight}px`,
         width: `${cursorWidth}px`,
-        backgroundColor: "black",
+        backgroundColor: "white",
         pointerEvents: "none",
         zIndex: 2000,
+        mixBlendMode: "difference",
       }}
     />
   );
